@@ -1,0 +1,9 @@
+// removing one item from a object
+var program = {genres : ["children", "adventure"], name: "Kill Bill"};
+
+var main = function(obj, key) {
+	delete obj[key];
+}
+main(program, 'genres');
+
+console.log(program);

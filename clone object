@@ -1,0 +1,16 @@
+// clone an object as long as no functions are involved
+var a = {word : "hello", sentence: "hello world"};
+
+var b = JSON.parse(JSON.stringify(a));
+delete a.word;
+
+console.log(a);
+
+console.log(b);
+
+/* Output:
+
+{ sentence: 'hello world' }
+{ word: 'hello', sentence: 'hello world' }
+
+*/

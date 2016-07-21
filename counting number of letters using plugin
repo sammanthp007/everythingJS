@@ -1,0 +1,19 @@
+var counter = require('./counting-number-of-letters-plugin');
+
+var argv = require('yargs')
+	.usage('USAGE: $t0 --name=[word]')
+	.demand(['name'])
+	.argv;
+
+function main(name) {
+	counter(name, function(err, number) {
+		if (err) {
+			return (err);
+		}
+		else {
+			console.log(number + " letters");
+		}
+	})
+}
+
+main(argv.name);

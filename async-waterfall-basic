@@ -1,0 +1,41 @@
+var async = require('async');
+var githubAPI = require('github');
+
+var github = new githubAPI({
+	version: '3.0.0'
+});
+
+var stack = [];
+
+var getGithubAvatar = function(callback) {
+	github.search.users({q: 'sammanthp007'}, function(err, res) {
+		if (err) {
+			console.error(err);
+			return;
+		}
+		else {
+			var avatarURL = res.items[0].avatar_url;
+			callback(null, avatarURL);
+		}
+	})
+};
+
+var getAvatarTag = function(result, callback) {
+	var avatarTag = "<img src=" + result + "/>";
+	callback(null, avatarTag);
+};
+
+stack.push(getGithubAvatar);
+stack.push(getAvatarTag);
+
+async.waterfall(stack, function(err, result) {
+	if (err) {
+		console.error(err);
+		return;
+	}
+	else {
+		console.log(result);
+	}
+})
+
+// requires all functions to have a callback

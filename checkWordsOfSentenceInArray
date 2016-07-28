@@ -1,0 +1,18 @@
+var sentence = 'pikachu rocks';
+
+var listOfWords = require('./allPokemons.json').pokemons;
+
+function checkWordsOfSentenceInArray(sentence, listOfWords) {
+	var listSentence = sentence.split(' ');
+	for (var i = 0; i < listSentence.length; i++) {
+		for (var j = 0; j < listOfWords.length; j++) {
+			if (listSentence[i].toLowerCase() == listOfWords[j].toLowerCase()) {
+				return true;
+			}
+		}
+	}
+	return false
+}
+
+
+console.log(checkWordsOfSentenceInArray(sentence, listOfWords))

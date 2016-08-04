@@ -1,0 +1,38 @@
+var async = require('async');
+
+// We have an array of functions then async will call all those functions parallelly
+
+var stack = [];
+
+var functionOne = function(callback) {
+	// perform action
+	callback(null, "First Function Results");
+	// callback('error', null);
+}
+
+var functionTwo = function(callback) {
+	// perform action
+	callback(null, "Second Function Results");
+}
+
+var functionThree = function(callback) {
+	// perform action
+	// callback(null, "Third Function Results");
+	callback('error', null);
+}
+
+
+stack.push(functionOne);
+stack.push(functionTwo);
+stack.push(functionThree);
+
+// calling all the three function using async
+
+async.parallel(stack, function(err, results) {
+	if (err) {
+		throw new Error("This is an error");
+	}
+	else {
+		console.log(results);
+	}
+})

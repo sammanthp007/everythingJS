@@ -28,3 +28,7 @@ set autoread
 
 " indenting is 2 spaces
 set shiftwidth=2
+
+" some common commands
+" g CTRL+G <- for getting statistic about where the cursor is
+" :goto 34 <- goto the character at 34
